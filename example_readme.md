@@ -86,7 +86,3 @@ This project utilizes a relational database (PostgreSQL) to store product inform
 ## Contributing
 
 We welcome contributions to this project! Please refer to the CONTRIBUTING.md file for details.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
