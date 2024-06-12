@@ -71,7 +71,7 @@ This application is designed for [Target Users] (e.g., sales representatives, in
 
 **Data Model:**
 This project utilizes a [Data Structure] (e.g., relational database, JSON documents) to represent [Data Entity] data. The following fields are typically stored:
-[Field 1]: (Data type) - Description of the field's purpose in the business context.
-[Field 2]: (Data type) - Description of the field's purpose in the business context.
-... (List all relevant fields)
+   * [Field 1]: (Data type) - Description of the field's purpose in the business context.
+   * [Field 2]: (Data type) - Description of the field's purpose in the business context.
+   * ... (List all relevant fields)
 
