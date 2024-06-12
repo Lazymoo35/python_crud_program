@@ -69,9 +69,12 @@ This application is designed for [Target Users] (e.g., sales representatives, in
     * **Update:** Modify customer details, such as updating their address or contact details.
     * **Delete:** Remove a customer record from the system (with appropriate authorization, if applicable).
 
-**Data Model:**
+## Data Model
 This project utilizes a [Data Structure] (e.g., relational database, JSON documents) to represent [Data Entity] data. The following fields are typically stored:
    * [Field 1]: (Data type) - Description of the field's purpose in the business context.
    * [Field 2]: (Data type) - Description of the field's purpose in the business context.
    * ... (List all relevant fields)
+
+## Contributing
+We welcome contributions to this project! Please refer to the CONTRIBUTING.md file for details.
 
