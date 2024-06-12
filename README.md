@@ -76,5 +76,5 @@ This project utilizes a [Data Structure] (e.g., relational database, JSON docume
    * ... (List all relevant fields)
 
 ## Contributing
-We welcome contributions to this project! Please refer to the CONTRIBUTING.md file for details.
+We welcome contributions to this project! Please feel free to open a pull request, sent to [your_email] or submit an issue if you encounter any problems or have suggestions for improvements.
 
