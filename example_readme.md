@@ -82,7 +82,3 @@ This project utilizes a relational database (PostgreSQL) to store product inform
     * `reorder_point` (Integer): Minimum stock level before reordering.
     * `category` (String): Category of the product (e.g., electronics, clothing).
     * `image_url` (String, optional): URL for the product image.
-
-## Contributing
-
-We welcome contributions to this project! Please refer to the CONTRIBUTING.md file for details.
