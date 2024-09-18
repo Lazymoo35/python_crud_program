@@ -48,7 +48,7 @@ This application is designed for [Target Users] (e.g., sales representatives, in
 
 2. **Installation:**
     ```bash
-    git clone [https://github.com/](https://github.com/)<your-username>/<your-repo-name>.git
+    git clone https://github.com/<your-username>/<your-repo-name>.git
     cd <your-repo-name>
     pip install -r requirements.txt  # If using a requirements.txt file
     ```
