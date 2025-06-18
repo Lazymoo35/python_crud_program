@@ -11,7 +11,6 @@ from tabulate import tabulate as tb
 
 # /===== Data Model =====/
 # Create your data model here
-customer = []
 log = [
     {"purchase id": 1, "item": "glass", "quantity": 2, "price": 15000, "total amount": 30000},
     {"purchase id": 2, "item": "pen", "quantity": 3, "price": 7500, "total amount": 22500},
@@ -29,9 +28,23 @@ def read():
 
     if not log:
         print("No purchase recorded yet.")
+        return
+
+    search_method = validation("Display all purchases (A) or search by Purchase ID (S)?: ", str).lower()
+    if search_method == "s":
+        try:
+            search_id = validation("Enter Purchase ID: ", int)
+        except:
+            print("Wrong input (not ID), showing all purchases")
+            selected_data = log
+        else:
+            selected_data = [selected_id for selected_id in log if selected_id["purchase id"] == search_id]
     else:
-        print("== List of Purchases ==")
-        print(tb(log, headers="keys", tablefmt="github", numalign="right", stralign="left"))
+        selected_data = log
+
+    print("\n== List of Purchases ==")
+    print(tb(selected_data, headers = "keys", tablefmt = "github", numalign = "right", stralign = "left"))
+    
     return
 
 def create():
@@ -41,7 +54,7 @@ def create():
     while create_confirmation == "n":
         print("\n== Add Customer's Purchase ==")
         purchase_id = len(log) + 1
-        item        = validation("Item purchased: ", str).lower().strip()
+        item        = validation("Item purchased: ", str).lower()
         qty         = validation("Quantity purchased (input whole numbers): ", int)
         price       = validation("Item price (input whole numbers): ", int)
         total_amount = qty * price
@@ -77,7 +90,7 @@ def update():
     """Function for updating the data
     """
     print("\n== Update Customer's Purchase ==")
-    change_purchase = int(input("Type the purchase id you wish to change: "))
+    change_purchase = validation("Type the purchase id you wish to change: ", int)
     found = False
 
     for purchase in log:
@@ -88,10 +101,10 @@ def update():
             
             while change_confirmation == "n":
                 print("\nChange the purchase below")
-                new_purchase_item = input("Add new item name: ")
-                new_purchase_qty = int(input("Add new quantity: "))
-                new_purchase_price = int(input("Add new price: "))
-                new_purchase_total_amount = purchase["quantity"] * purchase["price"]
+                new_purchase_item = validation("Add new item: ", str).lower()
+                new_purchase_qty = validation("Add new quantity: ", int)
+                new_purchase_price = validation("Add new price: ", int)
+                new_purchase_total_amount = new_purchase_price * new_purchase_qty
 
                 print("\nNew Changes")
                 print("Item", new_purchase_item)
@@ -103,15 +116,15 @@ def update():
                 if change_confirmation == "n":
                     cancel = input("Do you wish to cancel and exit change? (y/n): ").lower().strip()
                     if cancel == "y":
-                        break
+                        return
                 elif change_confirmation == "y":
-                    break
+                    purchase["item"] = validation("Add new item: ", str).lower()
+                    purchase["quantity"] = validation("Add new quantity: ", int)
+                    purchase["price"] = validation("Add new price: ", int)
+                    purchase["total amount"] = purchase["quantity"] * purchase["price"]
+                    return
 
-            purchase["item"] = input("Add new item name: ")
-            purchase["quantity"] = int(input("Add new quantity: "))
-            purchase["price"] = int(input("Add new price: "))
-            purchase["total amount"] = purchase["quantity"] * purchase["price"]
-            break
+            
     if not found:
         print("Purchase ID not found, please refer to recorded purchases or recheck your ID.")
 
@@ -130,7 +143,7 @@ def delete():
             found = True
             print(tb([purchase], headers="keys", tablefmt="github", numalign="right", stralign="left"))
             
-            delete_confirmation = input("Are you sure in deleting this purchase log? (y/n): ").lower().strip
+            delete_confirmation = input("Are you sure in deleting this purchase log? (y/n): ").lower().strip()
             if delete_confirmation == 'y':
                 log.remove(purchase)
                 print(f"Purchase log with ID of {delete_confirmation} has been deleted")
@@ -146,19 +159,19 @@ def exit():
     print("\n == Exit Confirmation ==")
     exit_confirmation = input("Are you sure you are done? (y/n): ").lower().strip()
     if exit_confirmation == "y":
-        print("Thank you for shopping!")
+        print("Data Stored!")
         return False
 
-def validation(message, type_convert):
+def validation(message, type_convertion):
     """Function for validating input
     """
     while True:
         subtitu = input(message).strip()
         try:
-            convert = type_convert(subtitu)
+            convert = type_convertion(subtitu)
+            return convert
         except:
-            print(f"Input invalid, make sure you input {type_convert}!")
-        return convert
+            print(f"Input invalid, make sure you input {type_convertion}!")
         
 
 # /===== Main Program =====/
