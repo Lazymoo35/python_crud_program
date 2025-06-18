@@ -42,8 +42,8 @@ def create():
         print("\n== Add Customer's Purchase ==")
         purchase_id = len(log) + 1
         item        = str(input("Item purchased: ")).lower().strip()
-        qty         = int(input("Quantity purchased: "))
-        price       = int(input("Price for item: "))
+        qty         = int(input("Quantity purchased (input whole numbers): "))
+        price       = int(input("Price for item (input whole numbers): "))
         total_amount = qty * price
         # while price <=0: # Shorten into another function later
         #     print("Enter positive amount")
@@ -107,8 +107,8 @@ def update():
             purchase["price"] = int(input("Add new price: "))
             purchase["total amount"] = purchase["quantity"] * purchase["price"]
             break
-        if not found:
-            print("Purchase ID not found, please refer to recorded purchases or recheck your ID.")
+    if not found:
+        print("Purchase ID not found, please refer to recorded purchases or recheck your ID.")
 
     return
 
@@ -143,7 +143,14 @@ def exit():
     if exit_confirmation == "y":
         print("Thank you for shopping!")
         return False
-    
+
+def input_validation(subtitu, message):
+    """Function for validating input
+    """
+    while True:
+        subtitu = input(message)
+        try:
+            convert = type(subtitu)
         
 
 # /===== Main Program =====/
