@@ -41,19 +41,24 @@ def create():
     while create_confirmation == "n":
         print("\n== Add Customer's Purchase ==")
         purchase_id = len(log) + 1
-        item        = str(input("Item purchased: ")).lower().strip()
-        qty         = int(input("Quantity purchased (input whole numbers): "))
-        price       = int(input("Price for item (input whole numbers): "))
+        item        = validation("Item purchased: ", str).lower().strip()
+        qty         = validation("Quantity purchased (input whole numbers): ", int)
+        price       = validation("Item price (input whole numbers): ", int)
         total_amount = qty * price
         # while price <=0: # Shorten into another function later
         #     print("Enter positive amount")
         #     price   = int(input("Price for item: "))
         print(f"The purchase is {qty} {item}, with total amount of Rp.{total_amount}.")
-        create_confirmation = str(input("Are you sure (y/n): ")).lower().strip()
-    
-    new_purchase = {"purchase id": purchase_id, "item": item, "quantity": qty, "price": price, "total amount": total_amount}
-    log.append(new_purchase)
-    print("Purchase has been added!")
+        create_confirmation = str(input("Are you sure (y/n)/(cancel): ")).lower().strip()
+        if create_confirmation == "n":
+            create_confirmation == "n"
+        elif create_confirmation == "y":
+            create_confirmation == "y"
+            new_purchase = {"purchase id": purchase_id, "item": item, "quantity": qty, "price": price, "total amount": total_amount}
+            log.append(new_purchase)
+            print("Purchase has been added!")
+        else:
+            break
     return
 
 def create_loop():
@@ -144,13 +149,16 @@ def exit():
         print("Thank you for shopping!")
         return False
 
-def input_validation(subtitu, message):
+def validation(message, type_convert):
     """Function for validating input
     """
     while True:
-        subtitu = input(message)
+        subtitu = input(message).strip()
         try:
-            convert = type(subtitu)
+            convert = type_convert(subtitu)
+        except:
+            print(f"Input invalid, make sure you input {type_convert}!")
+        return convert
         
 
 # /===== Main Program =====/
