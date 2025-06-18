@@ -7,6 +7,8 @@
 
 # /************************************/
 from tabulate import tabulate as tb
+import csv
+from datetime import datetime as dt
 # /************************************/
 
 # /===== Data Model =====/
@@ -159,7 +161,6 @@ def exit():
     print("\n == Exit Confirmation ==")
     exit_confirmation = input("Are you sure you are done? (y/n): ").lower().strip()
     if exit_confirmation == "y":
-        print("Data Stored!")
         return False
 
 def validation(message, type_convertion):
