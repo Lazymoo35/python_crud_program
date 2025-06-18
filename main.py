@@ -101,16 +101,16 @@ def update():
             
             while change_confirmation == "n":
                 print("\nChange the purchase below")
-                new_purchase_item = validation("Add new item: ", str).lower()
-                new_purchase_qty = validation("Add new quantity: ", int)
-                new_purchase_price = validation("Add new price: ", int)
-                new_purchase_total_amount = new_purchase_price * new_purchase_qty
+                new_item = validation("Add new item: ", str).lower()
+                new_quantity = validation("Add new quantity: ", int)
+                new_price = validation("Add new price: ", int)
+                new_total_amount = new_price * new_quantity
 
                 print("\nNew Changes")
-                print("Item", new_purchase_item)
-                print("Quantity: ", new_purchase_qty)
-                print("Price: ", new_purchase_price)
-                print("Amount: ",new_purchase_total_amount)
+                print("Item", new_item)
+                print("Quantity: ", new_quantity)
+                print("Price: ", new_price)
+                print("Amount: ",new_total_amount)
 
                 change_confirmation = input("Are you sure of the change? (y/n): ").lower().strip()
                 if change_confirmation == "n":
@@ -118,10 +118,10 @@ def update():
                     if cancel == "y":
                         return
                 elif change_confirmation == "y":
-                    purchase["item"] = validation("Add new item: ", str).lower()
-                    purchase["quantity"] = validation("Add new quantity: ", int)
-                    purchase["price"] = validation("Add new price: ", int)
-                    purchase["total amount"] = purchase["quantity"] * purchase["price"]
+                    purchase["item"] = new_item
+                    purchase["quantity"] = new_quantity
+                    purchase["price"] = new_price
+                    purchase["total amount"] = new_total_amount
                     return
 
             
